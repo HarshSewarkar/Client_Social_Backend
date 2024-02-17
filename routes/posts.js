@@ -108,10 +108,10 @@ router.get("/:id", async (req, res) => {
 });
 
 // GET ALL/TIMELINE POST
-router.get("/timeline/all", async (req, res) => {
+router.get("/timeline/:userId", async (req, res) => {
   try {
     // Use await to get the current user object by its ID
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
 
     // Retrieve posts created by the current user
     const userPosts = await Post.find({ userId: currentUser._id });

@@ -29,5 +29,5 @@ app.use("/api/auth", authRouter);
 app.use("/api/posts", postsRouter);
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port 3000`);
+  console.log(`Server is running on ${process.env.PORT}`);
 });
