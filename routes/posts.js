@@ -107,7 +107,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// GET ALL/TIMELINE POST
+// GET ALL/TIMELINE combine  POST
 router.get("/timeline/:userId", async (req, res) => {
   try {
     // Use await to get the current user object by its ID
@@ -130,6 +130,20 @@ router.get("/timeline/:userId", async (req, res) => {
     res.json(timelinePosts);
   } catch (error) {
     // Handle errors by responding with a 500 status code and an error message
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// GET ALL POST of user
+// router.get("/profile/:username", ...)
+router.get("/profile/:username", async (req, res) => {
+  try {
+    const currentUser = await User.findOne({ username: req.params.username });
+
+    const posts = await Post.find({ userId: currentUser._id });
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
