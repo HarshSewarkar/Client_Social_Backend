@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -31,9 +31,5 @@ app.use("/api/auth", authRouter);
 app.use("/api/posts", postsRouter);
 
 app.listen(process.env.PORT, () => {
-<<<<<<< HEAD
   console.log(`Server is running on ${process.env.PORT}`);
-=======
-  console.log(`Server is running on port 8080`);
->>>>>>> 11fc840842f2bfe4be351cbff6418969f2abc759
 });
