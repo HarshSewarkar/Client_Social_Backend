@@ -60,19 +60,19 @@ router.delete("/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   const userId = req.query.userId;
   const username = req.query.username;
-  console.log("userId:", userId);
-  console.log("username:", username);
+  // console.log("userId:", userId);
+  // console.log("username:", username);
 
   try {
     // Attempt to find a user by ID in the database
     const user = userId
       ? await User.findById(userId)
       : await User.findOne({ username: username });
-    console.log("User:", user);
+    // console.log("User:", user);
 
     if (user) {
       const { password, updatedAt, ...other } = user.toObject();
-      console.log("Response:", other);
+      // console.log("Response:", other);
       res.status(200).json(other);
     } else {
       res.status(404).json({ error: "User not found" });
